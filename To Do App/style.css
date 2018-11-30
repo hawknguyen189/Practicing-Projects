@@ -1,0 +1,91 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+html{
+  font-size: 16px;
+}
+body{
+  font-family: "rock salt";
+}
+footer{
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Quicksand",sans-serif;
+  color:rgb(119, 136, 153);
+  line-height: 125px;
+}
+.title{
+  background-color: rgb(135, 206, 235);
+  color: rgb(240, 230, 140);
+  text-align: center;
+  padding: 10px auto;
+}
+/*styling the main header*/
+.main-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 125px;
+  font-family: Quicksand,sans-serif;
+  color:rgb(119, 136, 153);
+  margin:10px;
+}
+/*styling the list*/
+.main-container{
+  display:flex;
+  justify-content: space-between;
+}
+.main-list{
+  display: inline-flex;
+  flex-flow: column;
+  width:100%;
+  align-content: space-around;
+  flex-grow: 3;
+}
+.row{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 200px;
+}
+.dark-white{
+  background-color: snow;
+}
+.white{
+  background-color: rgb(255,255,255);
+}
+.cube{
+  width:125px;
+  height: 125px;
+  padding:10px;
+  border:  1px solid rgb(255, 255, 255);
+  padding: 10px;
+}
+.blue{
+  background-color: rgb(135, 206, 235);
+  font-size:1.75rem;
+  font-family: "rock Salt",cursive;
+  display: flex;
+  align-items:center;
+}
+.yellow{
+  background-color: rgb(240, 230, 140);
+  font-size: 1rem;
+  font-family: "Quicksand",sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.reminder{
+  width: 100%;
+  color: rgb(0,0,0);
+  background-color: rgb(240, 230, 140);
+  font-size: 1.5rem;
+  line-height: 90px;
+  margin:0px;
+  display:inline-flex;
+  justify-content: center;
+}

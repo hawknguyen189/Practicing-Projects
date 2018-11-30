@@ -1,0 +1,102 @@
+*{
+  padding:0px;
+  margin:0px;
+}
+img {
+border: none;
+vertical-align: top;}
+html{
+  font-size: 16px;
+}
+body{
+  background-color: rgb(1, 1, 101);
+  font-family: "work sans";
+}
+header div{
+  width:100%;
+  height:50px;
+  background-color:rgb(0, 255, 255);
+  position: fixed;
+  z-index: 2018;
+}
+header div img{
+  display: block;
+  margin: 0 auto;
+}
+.main-text{
+  display: flex;
+  text-align: center;
+  padding-top:70px;
+  color:rgb(0, 255, 255);
+  justify-content: center;
+}
+.instruction-title{
+  font-size: 1.125rem;
+  font-family: "work sans";
+}
+.instruction-star{
+  padding: 0 10px;
+}
+.steps{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+table{
+  margin:0 auto;
+  width: 400px;
+}
+.order{
+  color:rgb(0, 255, 255);
+  padding-right: 25px;
+  font-size: 2.25rem;
+}
+.details{
+  color:rgb(255, 255, 255);
+  /*font-size: 0.875rem;*/
+  padding:10px;
+}
+/*styling doors div*/
+.three-doors{
+  display:flex;
+  justify-content: center;
+}
+.door-image{
+  padding:10px;
+  width:120px;
+  height: 227px;
+  cursor:pointer;
+}
+/*styling re-start button*/
+.button{
+  font-size: 1.125rem;
+  font-family: "work sans";
+  background-color: rgb(235, 101, 54);
+  color:rgb(1, 1, 101);
+  cursor:pointer;
+  margin:auto;
+  width: 120px;
+  height: 60px;
+  text-align: center;
+  padding-top: 20px;
+}
+/*styling scoreboard*/
+.scoreBoard{
+  display:flex;
+  justify-content: center;
+  margin:15px;
+}
+.board{
+  color: rgb(255,255,255);
+  margin: 15px;
+}
+.score{
+  font-size: 1.8125rem;
+  color: rgb(0,0,0);
+  background-color: rgb(0, 255, 255);
+  text-align: center;
+  width: 59px;
+  height: auto;
+  padding:8px;
+  margin: 15px auto;
+}

@@ -1,0 +1,42 @@
+.title{
+  font-family:helvetica;
+  font-weight:bold;
+  font-size:100px;
+  color:khaki;
+  text-align:center;
+  background-image:url("./image/pattern.jpeg")
+}
+.tool-brushes{
+  font-family:helvetica;
+  font-size:32px;
+  font-weight:bold;
+  color:white;
+  background-color:mediumspringgreen;
+}
+.tool-name{
+  font-weight:bold;
+  font-family: helvetica;
+}
+.caption{
+  font-family:helvetica;
+  font-size:14px;
+}
+.highlight{
+  color:blue;
+  font-weight:bold;
+}
+.tool{
+  font-family: helvetica;
+  font-size:32px;
+  font-weight:bold;
+  color:white;
+}
+.frame{
+  background-color:lightcoral;
+}
+.paint{
+  background-color:lightcoral;
+}
+.paint{
+  background-color:skyblue;
+}

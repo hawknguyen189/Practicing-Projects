@@ -1,0 +1,137 @@
+html{
+  font-size:16px;
+}
+body{
+  font-family: Helvetica;
+  font-size:22px;
+  color:seashell;
+  background-color:black;
+  opacity:0.9;
+  text-align:center;
+  margin:0;
+}
+header{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 10;
+  background-color: black;
+}
+.body-container{
+  position:fixed;
+  height:69px;
+  width:100%;
+  border-bottom:1px solid seashell;
+  justify-content: flex-start;
+}
+/*use flexbox to establish logo on the
+left and navbar on the right*/
+.logo{
+  height:50px;
+  width:auto;
+  margin-left:10px;
+}
+nav.nav-menu{
+  text-decoration:underline;
+  margin-left: auto; /*push navbar to the right*/
+}
+nav ul{
+  font-size: 0;
+}
+nav li{
+  list-style:none;
+  display:inline-block;
+  padding:0;
+  margin:0;
+  color:seashell;
+  font-size:22px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+.main{
+  width: 1200px;
+  margin:auto;
+}
+.mission-container{
+  display:flex;
+  flex-wrap: wrap;
+  position:relative;
+  top:69px;
+  background-image:url("img-mission-background.jpg");
+  background-repeat:no;
+  height:700px;
+  justify-content: center;
+  align-items: center;
+}
+.mission-quote{
+  background-color: black;
+  width: 100%;
+}
+
+.question{
+  width:1000px;
+  margin:auto;
+  padding-top:70px;
+}
+
+.tea-list-container{
+  display:flex;
+  width:1000px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin:auto;
+  padding-bottom: 40px;
+}
+
+.teapic img{
+  width:300px;
+  height:200px;
+  margin:10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+.img-caption{
+  display: block;
+}
+
+.location-list{
+  background-image: url("img-locations-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:top;
+  height:500px;
+  width:auto;
+  padding-top: 70px;
+}
+.address-list{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.location-text{
+  width:100%;
+  height:auto;
+  padding-top: 0px;
+  margin-bottom:15px;
+}
+.address{
+  background-color: black;
+  opacity: 1;
+  width:300px;
+  margin:0 20px;
+}
+
+.contact{
+  height:200px;
+}
+.copyright{
+  text-align: left;
+  padding-left:20px;
+}
+a:link, a:hover, a:visited, a:active {
+  color:seashell;
+}
