@@ -23,7 +23,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.contact-container {
+.contact-slider-container {
   background-color: #282c34;
   min-height: 50vh;
   /* height: 300px; */

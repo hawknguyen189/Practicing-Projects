@@ -1,0 +1,32 @@
+.arrow{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform ease-in .1s;
+}
+
+.nextArrow{
+  position: absolute;
+  bottom: 0;
+  left: 200px;
+  z-index: 999;
+  color: red;
+}
+.backArrow{
+  position: absolute;
+  bottom: 0;
+  left: 150px;
+  z-index: 999;
+  color: red;
+}
+
+.fa-arrow-right:before, .fa-arrow-left:before {
+  color: #222
+}

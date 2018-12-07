@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import {TempCalculatorContainer} from "./container/TempCalculatorContainer"
 import {ContactContainer} from "./container/ContactContainer"
-import {SlidingShow} from "./component/SlidingShow/SlidingShow"
-
+// import {SlidingShow} from "./component/SlidingShow/SlidingShow"
+import {Slider} from "./component/SlidingShow/ArrowSlider/Slider"
 class App extends Component {
   render() {
     return (
@@ -13,8 +13,8 @@ class App extends Component {
           <img src={logo} className="app-logo" alt="react spinning"/>
           <TempCalculatorContainer className="temp-form"/>
         </div>
-        <div className="contact-container">
-          <SlidingShow/>
+        <div className="contact-slider-container">
+          <Slider/>
           <ContactContainer/>
         </div>
       </div>

@@ -1,0 +1,25 @@
+.slider-container{
+  /* height: 700px;
+  width: 700px; */
+  /* position: relative;
+  display: -webkit-flex;
+  display: -ms-flex; */
+  /* -ms-align-items: center;
+  align-items: center;
+  justify-content: center; */
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.slider-wrapper{
+  /* display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row; */
+  position: relative;
+  height: 100%;
+  width: 100%;
+}

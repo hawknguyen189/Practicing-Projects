@@ -34,7 +34,7 @@ export class SlidingShow extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div >
         <img src={pokemons[this.state.currentPic]} className="pokemon" alt="My favorite pokemon"/>
       </div>
     )
