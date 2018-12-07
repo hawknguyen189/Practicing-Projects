@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .app-logo {
@@ -7,15 +13,28 @@
   height: 40vmin;
 }
 
-.App {
+.temperature-container {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.contact-container {
+  background-color: #282c34;
+  min-height: 50vh;
+  /* height: 300px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-right: 0px;
+  padding-right: 0px;
 }
 
 .App-link {
