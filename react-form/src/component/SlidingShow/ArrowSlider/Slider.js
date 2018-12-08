@@ -1,8 +1,9 @@
 import React from "react";
 import "./Styles/Slider.css"
 import Slide from "./Slide"
-import RightArrow from "./RightArrow"
-import LeftArrow from "./LeftArrow"
+// import RightArrow from "./RightArrow"
+// import LeftArrow from "./LeftArrow"
+import SlidingButton from "./SlidingButton"
 import Pokemon1 from "../Pics/pokemon-1.png"
 import Pokemon2 from "../Pics/pokemon-2.png"
 import Pokemon3 from "../Pics/pokemon-3.png"
@@ -16,6 +17,7 @@ const pokemons =[
 export class Slider extends React.Component {
   constructor(props){
     super(props);
+    this.interval = null;
     this.state= {
       slides: pokemons,
       currentPic:0,
@@ -23,12 +25,21 @@ export class Slider extends React.Component {
     }
     this.goToNextSlide = this.goToNextSlide.bind(this);
     this.goToPrevSlide = this.goToPrevSlide.bind(this);
+    this.goToSelectedSlide = this.goToSelectedSlide.bind(this);
+  }
+
+  componentDidMount(){
+    this.interval = setInterval(this.goToNextSlide,5000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval);
   }
 
   goToNextSlide(){
     // const currentIndex = this.state.currentPic;
     // let newSlide = ++currentIndex;
-    if (this.state.currentPic === this.state.slides.length -1){
+    if (this.state.currentPic >= this.state.slides.length -1){
       this.setState({
         currentPic:0,
         translateValue:0
@@ -42,7 +53,9 @@ export class Slider extends React.Component {
   }
 
   goToPrevSlide(){
-    if (this.state.currentPic === 0){
+    // const currentIndex = this.state.currentPic;
+    // let newSlide = ++currentIndex;
+    if (this.state.currentPic <= 0){
       return;
     } else {
       this.setState(prevState => ({
@@ -52,6 +65,26 @@ export class Slider extends React.Component {
     }
   }
 
+  goToSelectedSlide(index){
+    if (this.state.currentPic === index){
+      return;
+    } else if (this.state.currentPic < index){
+      this.setState(() => ({
+      currentPic: index,
+      translateValue: -index*this.slideWidth()
+    }))
+    } else if (this.state.currentPic > index) {
+      this.setState(() => ({
+      currentPic: index,
+      translateValue: -index*this.slideWidth()
+    }))
+  } else if (this.state.currentPic >= this.state.slides.length -1){
+    this.setState({
+      currentPic:0,
+      translateValue:0
+    })
+}
+}
   slideWidth(){
     return document.querySelector(".slide").clientWidth;
   }
@@ -70,9 +103,17 @@ export class Slider extends React.Component {
             })
           }
         </div>
+        <div className="sliding-button-container">
+          {
+            this.state.slides.map((slide,index) => {
+              return <SlidingButton slide={slide} index={index}
+                goToSelectedSlide={this.goToSelectedSlide}/>
+            })
+          }
+        </div>
+        {/*<LeftArrow goToPrevSlide={this.goToPrevSlide}/>
+        <RightArrow goToNextSlide={this.goToNextSlide}/>*/}
 
-        <LeftArrow goToPrevSlide={this.goToPrevSlide}/>
-        <RightArrow goToNextSlide={this.goToNextSlide}/>
       </div>
     )
   }

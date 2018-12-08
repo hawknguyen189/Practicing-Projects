@@ -1,0 +1,14 @@
+.Sliding-Button{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  bottom:15px;
+  align-items: center;
+  justify-content: center;
+  /* background: lightblue; */
+  /* border-radius: 20%; */
+  cursor: pointer;
+}
