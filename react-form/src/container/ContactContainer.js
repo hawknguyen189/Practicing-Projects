@@ -1,5 +1,11 @@
 import React from "react";
 import {ContactInput} from "../component/Contact/ContactInput"
+import ContactButton from "../component/Contact/ContactButton"
+// import Cookies from 'universal-cookie';
+// const cookies = new Cookies();
+// cookies.set('fullName', 'HawkNg', { path: '/' });
+// console.log(cookies.get('fullName')); // Pacman
+
 
 export class ContactContainer extends React.Component{
   constructor(props){
@@ -69,8 +75,11 @@ export class ContactContainer extends React.Component{
 
   render () {
     return (
-      <ContactInput error={this.state.error} value={this.state.value} handleError={this.handleError}
-        handleChange={this.handleChange } handleSubmit={this.handleSubmit}/>
+      <div>
+        <ContactInput error={this.state.error} value={this.state.value} handleError={this.handleError}
+          handleChange={this.handleChange } handleSubmit={this.handleSubmit}/>
+        <ContactButton error={this.state.error}/>
+      </div>
     )
   }
 }

@@ -1,9 +1,6 @@
 import React from "react";
-import "./ContactInput.css";
-// import Cookies from 'universal-cookie';
-// const cookies = new Cookies();
-// cookies.set('fullName', 'HawkNg', { path: '/' });
-// console.log(cookies.get('fullName')); // Pacman
+import "./Contact.css";
+
 export class ContactInput extends React.Component{
 
   render(){
@@ -27,9 +24,6 @@ export class ContactInput extends React.Component{
               <label htmlFor="email">Email </label>
               <input type="text" id="email" name="email"
                 placeholder="Please input here" onChange={this.props.handleChange}/>
-            </div>
-            <div className="submit-button">
-              <input type="submit" disabled={this.props.error}/>
             </div>
           </fieldset>
         </form>
