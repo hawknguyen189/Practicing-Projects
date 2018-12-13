@@ -1,34 +1,15 @@
 import React from "react";
 import "./Contact.css";
 
-export class ContactInput extends React.Component{
-
-  render(){
-    return(
-      <div className="contact-form">
-        <form  className="container" onSubmit={this.props.handleSubmit}>
-          <h2>Please do not hesitate to contact me</h2>
-          <fieldset>
-            <legend>Please send me your contact</legend>
-            <div>
-              <label htmlFor="firstName">First Name </label>
-              <input type="text" id="firstName" name="firstName"
-                placeholder="Please input here" onChange={this.props.handleChange}/>
-            </div>
-            <div>
-              <label htmlFor="lastName">Last Name </label>
-              <input type="text" id="lastName" name="lastName"
-                placeholder="Please input here" onChange={this.props.handleChange}/>
-            </div>
-            <div>
-              <label htmlFor="email">Email </label>
-              <input type="text" id="email" name="email"
-                placeholder="Please input here" onChange={this.props.handleChange}/>
-            </div>
-          </fieldset>
-        </form>
-        {this.props.error && this.props.value ? <h3>{this.props.error}</h3> : null}
+const ContactInput = (props) => {
+  return(
+      <div>
+        <label htmlFor={props.name}>{props.label}</label>
+        <input type={props.type} id={props.name} name={props.name}
+          placeholder={props.placeholder} onChange={props.handleChange}/>
+        {props.error && props.value ? <h6>{props.error}</h6> : null}
       </div>
     )
-  }
 }
+
+export default ContactInput;

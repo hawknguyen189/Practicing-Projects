@@ -27,3 +27,22 @@ label{
 input{
   height:100%;
 }
+
+.contact-input{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* .checkbox{
+  color:red;
+  background-color:white;
+} */
+
+.checkbox-square{
+  width: 15px;
+  height: 15px;
+}

@@ -20,7 +20,7 @@ class SlidingButton extends React.Component{
     return (
       <div className="Sliding-Button" style={styles}
         onClick={this.handleClick}>
-        <i class="fab fa-bitcoin"></i>
+        <i className="fab fa-bitcoin"></i>
       </div>
     )
   }
