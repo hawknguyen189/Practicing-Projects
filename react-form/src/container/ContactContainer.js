@@ -15,60 +15,72 @@ export class ContactContainer extends React.Component{
     super(props);
     this.state = {
       newUser :{
-        firstName:null,
-        lastName:null,
-        email:null,
-        gender:null,
-        interest:null,
+        firstName:"",
+        lastName:"",
+        email:"",
+        gender:"",
+        interest:"",
         skill:[],
-        error:null
+        error:{
+          firstName:"",
+          lastName:"",
+          email:"",
+          gender:"",
+          interest:"",
+          skill:""
+        }
       },
       genderOption : ["Male", "Female","Others"],
       skillOptions: ['Programming', 'Development', 'Design', 'Testing'],
       selectedOptions : []
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleError = this.handleError.bind(this);
     this.handleCheckBox = this.handleCheckBox.bind(this);
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handleResetForm = this.handleResetForm.bind(this);
   }
 
-  componentDidMount(){
-    this.setState(prevState => ({
-      newUser:{
-        ...prevState.newUser,
-        error:this.handleError("","email"),
-        firstName: null
-      }
-    }))
-  }
-
-  handleSubmit(e){
-    e.preventDefault()
-    console.log({target: e.target})
-    const formNodes = e.target;
-    for (let node of formNodes) {
-      if(node.nodeName.toUpperCase() === "INPUT"){
-        if(node.name === "firstName"){
-          console.log(node.value);
-        }
-      }
-    }
-  }
+  // componentDidMount(){
+  //   this.setState(prevState => ({
+  //     newUser:{
+  //       ...prevState.newUser,
+  //       error:{
+  //         ...prevState.newUser.error,
+  //         email:this.handleError("","email"),
+  //       },
+  //       firstName: ""
+  //     }
+  //   }))
+  // }
+  //
+  // handleSubmit(e){
+  //   e.preventDefault()
+  //   console.log({target: e.target})
+  //   const formNodes = e.target;
+  //   for (let node of formNodes) {
+  //     if(node.nodeName.toUpperCase() === "INPUT"){
+  //       if(node.name === "firstName"){
+  //         console.log(node.value);
+  //       }
+  //     }
+  //   }
+  // }
 
   handleChange(e){
     console.log({target: e.target})
     const value = e.target.value;
-    const labelName = document.querySelector(`label[for=${e.target.id}]`).textContent
+    // const labelName = document.querySelector(`label[for=${e.target.id}]`).textContent
     const elementName = e.target.name;
-    let error = this.handleError(value,elementName);
-    if (error) {
-      error = error + " " + labelName;
-    }
+    const error = this.handleError(value,elementName);
     this.setState(prevState => ({
       newUser:{
         ...prevState.newUser,
-        error:error,
+        error: {
+          ...prevState.newUser.error,
+          [elementName]:error
+        },
         [elementName]: value
       }
     }))
@@ -93,17 +105,53 @@ export class ContactContainer extends React.Component{
     const emailRegex = /^\w+@\w+[.][a-zA-Z]+$/g;
     if (name ==="firstName" || name === "lastName"){
       if(value.search(/[^a-z\s]/i)!==-1){
-        return "Your input is invalid for your"
+        return "Your name contains invalid character"
       } else {
-        return null
+        return ""
       }
     } else if (name === "email") {
-      if(!emailRegex.test(value)){
-        return "Your input is invalid for your"
+      if(!emailRegex.test(value) && value){
+        return "This is not a valid email format"
       } else {
-        return null
+        return ""
       }
     }
+  }
+
+  handleSubmitForm(e){
+    e.preventDefault();
+    const data = new FormData(e.target);
+    fetch("/", {
+      method: "post",
+      body: data
+    }).then(resolve=>{
+      console.log(resolve);
+    }).catch(e => {
+      console.log("this not ok " +e);
+    })
+  }
+
+  handleResetForm(e){
+    e.preventDefault();
+    console.log({target:e.target})
+    this.setState({
+      newUser :{
+        firstName:"",
+        lastName:"",
+        email:"",
+        gender:"",
+        interest:"",
+        skill:[],
+        error:{
+          firstName:"",
+          lastName:"",
+          email:"",
+          gender:"",
+          interest:"",
+          skill:""
+        }
+      }
+    })
   }
 
   render () {
@@ -114,28 +162,33 @@ export class ContactContainer extends React.Component{
           <fieldset>
             <div className="contact-input">
               <legend>Please send me your contact</legend>
-              <ContactInput error={this.state.newUser.error} value={this.state.newUser.firstName}
+              <ContactInput error={this.state.newUser.error.firstName} value={this.state.newUser.firstName}
                 handleError={this.handleError} handleChange={this.handleChange }
                 handleSubmit={this.handleSubmit} type="text"
                 placeholder="Please input here" name="firstName" label="First Name"
                 />
-              <ContactInput error={this.state.newUser.error} value={this.state.newUser.lastName}
+              <ContactInput error={this.state.newUser.error.lastName} value={this.state.newUser.lastName}
                 handleError={this.handleError} handleChange={this.handleChange }
                 handleSubmit={this.handleSubmit} type="text"
                 placeholder="Please input here" name="lastName" label="Last Name"
                 />
-              <ContactInput error={this.state.newUser.error} value={this.state.newUser.email}
+              <ContactInput error={this.state.newUser.error.email} value={this.state.newUser.email}
                 handleError={this.handleError} handleChange={this.handleChange }
                 handleSubmit={this.handleSubmit} type="text"
                 placeholder="Please input here" name="email" label="Email"
                 />
             </div>
             <ContactSelect title="Gender Select" name="gender" id="gender"
-              option={this.state.genderOption} handleChange={this.handleChange}/>
-            <ContactButton error={this.state.newUser.error}/>
+              option={this.state.genderOption} handleChange={this.handleChange} value={this.state.newUser.gender}/>
             <ContactCheckBox type="checkbox" skillOptions={this.state.skillOptions}
               handleChange={this.handleChange} title="Select your skill"
               skill={this.state.newUser.skill} handleCheckBox={this.handleCheckBox}/>
+            <div className="control-button">
+              <ContactButton error={this.state.newUser.error} handleSubmit={this.handleSubmitForm}
+                className="submit-button" title="Submit Form" id="submitButton"/>
+              <ContactButton error="" handleSubmit={this.handleResetForm}
+                className="reset-button" title="Reset Form" id="resetButton"/>
+            </div>
         </fieldset>
       </form>
       </div>

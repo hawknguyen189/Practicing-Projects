@@ -5,11 +5,11 @@ const ContactSelect = (props) => {
     <div>
       <label htmlFor={props.name}>{props.title}</label>
       <select name={props.name} id={props.id}
-        onChange={props.handleChange}>
+        onChange={props.handleChange} value={props.value}>
         <option value="">Please select your gender</option>
         {
-          props.option.map(option => {
-            return <option value={option}>{option}</option>
+          props.option.map((option,index) => {
+            return <option value={option} key={index}>{option}</option>
           })
         }
       </select>

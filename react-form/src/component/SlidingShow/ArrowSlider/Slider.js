@@ -107,7 +107,7 @@ export class Slider extends React.Component {
           {
             this.state.slides.map((slide,index) => {
               return <SlidingButton slide={slide} index={index}
-                goToSelectedSlide={this.goToSelectedSlide}/>
+                goToSelectedSlide={this.goToSelectedSlide} key={index}/>
             })
           }
         </div>
