@@ -1,0 +1,51 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+  color: #2e3738; }
+
+#landscape {
+  background: url("https://s3.amazonaws.com/codecademy-content/projects/sass/landscape.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; }
+
+#monkeys {
+  background: url("https://s3.amazonaws.com/codecademy-content/projects/sass/monkeys.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; }
+
+#landscape,
+#monkeys {
+  height: 100vh;
+  width: 100%;
+  -webkit-perspective: 1px;
+  perspective: 1px;
+  -webkit-transform: translateZ(-1px);
+  transform: translateZ(-1px);
+  overflow-x: hidden;
+  overflow-y: auto; }
+  #landscape h1,
+  #monkeys h1 {
+    text-transform: uppercase;
+    font-family: 'Bitter', serif;
+    letter-spacing: 0.06em;
+    font-size: 120px;
+    color: #FFF;
+    opacity: 0.7;
+    text-align: center;
+    -webkit-transform: translateZ(-2px);
+    transform: translateZ(-2px); }
+
+p {
+  width: 70%;
+  padding: 5%;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.4; }

@@ -1,0 +1,20 @@
+header nav {
+  border-bottom: 2px solid lightcoral; }
+  header nav div ul li a {
+    color: lightgoldenrodyellow;
+    font-family: "Fjalla One", sans-serif; }
+
+.jumbotron {
+  display: -ms-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: snow url(images/background-1.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.row div {
+  border: 1px solid silver; }
