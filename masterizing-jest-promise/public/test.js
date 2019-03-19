@@ -39,3 +39,4 @@ console.log("just call")
 callFunc();
 console.log(4);
 console.log("after call")
+console.log(window.history.length);
