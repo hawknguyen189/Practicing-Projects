@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import FooComponent from "./FooComponent"
-
+const googleTrends = require('google-trends-api');
+googleTrends.interestOverTime({
+        keyword: 'Women\'s march'
+    })
+    .then(function (results) {
+        console.log('These results are awesome', results);
+    })
+    .catch(function (err) {
+        console.error('Oh no there was an error', err);
+    });
 class App extends Component {
   render() {
     return (
