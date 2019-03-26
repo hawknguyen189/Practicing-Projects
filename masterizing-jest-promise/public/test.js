@@ -25,6 +25,10 @@ setTimeout(()=>console.log(5),0);
 //output: 1 3 2
 const bar = {name:"hawk", age:28};
 const foo = {name:"kiwi", age:"8months"};
+const bar = {name:"hawk", age:28};
+const foo = {name:"kiwi", age:"8months"};
+const bar = {name:"hawk", age:28};
+const foo = {name:"kiwi", age:"8months"};
 const test = bar + foo;
 console.log(typeof test); //string
 
