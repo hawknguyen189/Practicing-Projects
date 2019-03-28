@@ -1,19 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import FooComponent from "./FooComponent"
-const googleTrends = require('google-trends-api');
-googleTrends.interestOverTime({
-        keyword: 'Women\'s march'
-    })
-    .then(function (results) {
-        console.log('These results are awesome', results);
-    })
-    .catch(function (err) {
-        console.error('Oh no there was an error', err);
-    });
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import FooComponent from "./FooComponent";
+import FunctionalComponent from "./FunctionalComponent";
+import StateComponent from "./StateComponent";
+const googleTrends = require("google-trends-api");
+googleTrends
+  .interestOverTime({
+    keyword: "Women's march"
+  })
+  .then(function(results) {
+    console.log("These results are awesome", results);
+  })
+  .catch(function(err) {
+    console.error("Oh no there was an error", err);
+  });
 class App extends Component {
   render() {
+    const fooArray = [1, 2, 3];
+    const output = [];
+    for (const [index, value] of fooArray.entries()) {
+      output.push(<li key={index}>{value}</li>);
+    }
     return (
       <div className="App">
         <header className="App-header">
@@ -29,8 +37,11 @@ class App extends Component {
           >
             Learn React
           </a>
+          <ul>{output}</ul>
         </header>
-        <FooComponent/>
+        {/* <FooComponent/> */}
+        <FunctionalComponent />
+        <StateComponent></StateComponent>
       </div>
     );
   }
