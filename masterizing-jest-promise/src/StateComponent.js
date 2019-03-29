@@ -22,3 +22,4 @@ export default class StateComponent extends React.Component {
     );
   }
 }
+

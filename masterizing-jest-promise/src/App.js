@@ -4,7 +4,8 @@ import "./App.css";
 import FooComponent from "./FooComponent";
 import FunctionalComponent from "./FunctionalComponent";
 import StateComponent from "./StateComponent";
-const googleTrends = require("google-trends-api");
+// const googleTrends = require("./google-trends-api-master/src/index");
+import googleTrends from "./google-trends-api-master/src/index";
 googleTrends
   .interestOverTime({
     keyword: "Women's march"
