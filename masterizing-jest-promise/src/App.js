@@ -4,18 +4,21 @@ import "./App.css";
 import FooComponent from "./FooComponent";
 import FunctionalComponent from "./FunctionalComponent";
 import StateComponent from "./StateComponent";
-// const googleTrends = require("./google-trends-api-master/src/index");
+// const googleTrends = require("google-trends-api");
 import googleTrends from "./google-trends-api-master/src/index";
-googleTrends
-  .interestOverTime({
-    keyword: "Women's march"
-  })
-  .then(function(results) {
-    console.log("These results are awesome", results);
-  })
-  .catch(function(err) {
-    console.error("Oh no there was an error", err);
-  });
+console.log("start api requesting");
+console.log(googleTrends);
+googleTrends.interestOverTime(
+  {
+    keyword: "Valentines Day",
+    startTime: new Date(Date.now() - 4 * 60 * 60 * 1000)
+  },
+  function(err, results) {
+    if (err) console.log("oh no error!", err);
+    else console.log("oh yeah we got it",results);
+  }
+);
+  console.log("after api requesting");
 class App extends Component {
   render() {
     const fooArray = [1, 2, 3];
@@ -42,7 +45,7 @@ class App extends Component {
         </header>
         {/* <FooComponent/> */}
         <FunctionalComponent />
-        <StateComponent></StateComponent>
+        <StateComponent />
       </div>
     );
   }

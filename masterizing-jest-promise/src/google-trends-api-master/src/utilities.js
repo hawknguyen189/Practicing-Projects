@@ -243,6 +243,7 @@ export function getInterestResults(request) {
     return request(options)
     .then((results) => {
       const parsedResults = parseResults(results);
+      // const parsedResults = results;
 
       /**
        * Search for the id that matches the search result
