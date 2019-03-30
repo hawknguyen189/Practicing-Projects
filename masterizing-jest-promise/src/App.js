@@ -8,14 +8,17 @@ import StateComponent from "./StateComponent";
 import googleTrends from "./google-trends-api-master/src/index";
 console.log("start api requesting");
 console.log(googleTrends);
-googleTrends.interestOverTime(
+googleTrends.dailyTrends(
   {
-    keyword: "Valentines Day",
-    startTime: new Date(Date.now() - 4 * 60 * 60 * 1000)
+    trendDate: new Date("2019-03-30"),
+    geo: "US"
   },
   function(err, results) {
-    if (err) console.log("oh no error!", err);
-    else console.log("oh yeah we got it",results);
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(results);
+    }
   }
 );
   console.log("after api requesting");
