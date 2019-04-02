@@ -20,8 +20,6 @@ console.log(1);
 setTimeout(()=>console.log(2),0);
 console.log(3);
 setTimeout(()=>console.log(5),0);
-console.log(3);
-setTimeout(()=>console.log(5),0);
 //output: 1 3 2
 const bar = {name:"hawk", age:28};
 const foo = {name:"kiwi", age:"8months"};
