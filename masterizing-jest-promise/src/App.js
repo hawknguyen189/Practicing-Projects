@@ -4,23 +4,18 @@ import "./App.css";
 import FooComponent from "./FooComponent";
 import FunctionalComponent from "./FunctionalComponent";
 import StateComponent from "./StateComponent";
-// const googleTrends = require("google-trends-api");
-import googleTrends from "./google-trends-api-master/src/index";
+const googleTrends = require("google-trends-api");
+// import googleTrends from "./google-trends-api-master/src/index";
 console.log("start api requesting");
 console.log(googleTrends);
-googleTrends.dailyTrends(
-  {
-    trendDate: new Date("2019-03-30"),
-    geo: "US"
-  },
-  function(err, results) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(results);
-    }
-  }
-);
+googleTrends
+  .interestOverTime({ keyword: "bitcoin" })
+  .then(function(results) {
+    console.log(results);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
   console.log("after api requesting");
 class App extends Component {
   render() {

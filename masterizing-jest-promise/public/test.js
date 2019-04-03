@@ -40,3 +40,15 @@ callFunc();
 console.log(4);
 console.log("after call")
 console.log(window.history.length);
+const xhr = new XMLHttpRequest(); //create new obj
+xhr.open("POST",
+  "https://localhost:2000/?url=https://maximum.blog/@shalvah/posts"); // assuming you’re hosting it locally
+xhr.setRequestHeader("Content-type", "application/json");
+let data = {
+  headers: {
+    Accept: "application/json",
+    Origin: "http://maximum.blog"
+ },
+  method: 'GET'
+};
+xhr.send(JSON.stringify(data));
