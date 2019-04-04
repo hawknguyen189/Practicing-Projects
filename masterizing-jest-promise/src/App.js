@@ -4,8 +4,8 @@ import "./App.css";
 import FooComponent from "./FooComponent";
 import FunctionalComponent from "./FunctionalComponent";
 import StateComponent from "./StateComponent";
-const googleTrends = require("google-trends-api");
-// import googleTrends from "./google-trends-api-master/src/index";
+// const googleTrends = require("google-trends-api");
+import googleTrends from "./google-trends-api-master/src/index";
 console.log("start api requesting");
 console.log(googleTrends);
 googleTrends

@@ -52,3 +52,4 @@ let data = {
   method: 'GET'
 };
 xhr.send(JSON.stringify(data));
+console.log(xhr);

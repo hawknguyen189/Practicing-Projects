@@ -42,6 +42,7 @@ http
         method: body.method || "GET"
       };
 
+      
       let proxyCallback = (proxyErr, proxyRes, proxyBody) => {
         if (proxyErr) {
           console.log(proxyErr);

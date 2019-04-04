@@ -9,6 +9,7 @@ let cookieVal;
 function rereq(options, done) {
   let req;
 
+  
   req = https.request(options, (res) => {
     let chunk = '';
 
