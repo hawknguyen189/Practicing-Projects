@@ -23,8 +23,8 @@
 // boy.name = "hawk";
 // boy.birthday.day="2";
 // boy.birthday.month="may";
-// console.log(boy);
-// console.log(girl);
+console.log(boy);
+console.log(girl);
 const xhr = new XMLHttpRequest(); //create new obj
 xhr.open("POST",
     "https://localhost:2000/?url=https://maximum.blog/@shalvah/posts"); // assuming you’re hosting it locally
