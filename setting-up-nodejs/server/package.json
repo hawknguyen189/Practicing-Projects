@@ -1,26 +1,17 @@
 {
-    "name": "simple-cors-escape",
-    "version": "1.0.0",
-    "description": "Simple workaround for CORS",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/shalvah/simple-cors-escape.git"
-    },
-    "keywords": [
-        "cors"
-    ],
-    "author": "Shalvah Adebayo <shalvah.adebayo@gmail.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/shalvah/simple-cors-escape/issues"
-    },
-    "homepage": "https://github.com/shalvah/simple-cors-escape#readme",
-    "dependencies": {
-        "request": "^2.81.0",
-        "url": "^0.11.0"
-    }
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.18.10"
+  }
 }
