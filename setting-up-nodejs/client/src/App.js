@@ -14,7 +14,7 @@ import './App.css';
 // };
 // xhr.send(JSON.stringify(data));
 // console.log(xhr);
-const getSuggestions = async () => {
+const getRequest = async () => {
   // const wordQuery = inputField.value;
   const endpoint = "http://localhost:3000/ural";
   try {
@@ -29,7 +29,7 @@ const getSuggestions = async () => {
   }
 };
 const url = "https://trends.google.com/trends/api/explore?hl=en-US&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22bitcoin%22%2C%22hl%22%3A%22en-US%22%2C%22category%22%3A0%2C%22timezone%22%3A240%2C%22property%22%3A%22%22%2C%22endTime%22%3A%222019-04-08T19%3A34%3A11.964Z%22%2C%22startTime%22%3A%222004-01-01T00%3A00%3A00.000Z%22%2C%22time%22%3A%222004-01-1%202019-04-8%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D&tz=240"
-const shortenUrl = async () => {
+const postRequest = async () => {
   const data = JSON.stringify({
     headers: {
     Accept: "application/json",
