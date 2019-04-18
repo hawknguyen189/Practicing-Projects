@@ -36,5 +36,6 @@ let data = {
     },
     method: 'GET'
 };
+var a = 'cat' && 'dog';
+console.log(a);
 xhr.send(JSON.stringify(data));
-console.log(xhr);

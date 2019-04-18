@@ -70,6 +70,8 @@ const googleTrend = async () => {
 // getSuggestions();
 // shortenUrl();
 googleTrend();
+var a = 'cat' && 'dog';
+console.log(a);
 
 class App extends Component {
   render() {
