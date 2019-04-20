@@ -69,7 +69,7 @@ const googleTrend = async () => {
 
 // getSuggestions();
 // shortenUrl();
-googleTrend();
+// googleTrend();
 var a = 'cat' && 'dog';
 console.log(a);
 
