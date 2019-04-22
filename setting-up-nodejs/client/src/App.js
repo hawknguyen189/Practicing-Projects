@@ -67,7 +67,6 @@ const googleTrend = async () => {
   }
 };
 
-// getSuggestions();
 // shortenUrl();
 // googleTrend();
 var a = 'cat' && 'dog';
