@@ -64,5 +64,5 @@ const person = {
   }
 };
 const hawk = person.getName;
-console.log(person.fooName);
 console.log(hawk());
+console.log(typeof hawk);
