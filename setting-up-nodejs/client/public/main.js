@@ -1,68 +1,87 @@
 console.log("hello, im new to d3");
-// eslint-disable-next-line no-undef
-d3.select("p").style("color", "red");
-var fruits = ["apple", "mango", "banana", "orange"];
-d3.select("ul")
-  .selectAll("li")
-  .data(fruits)
-  .enter()
-  .append("li")
-  .text(function(d) {
-    return d;
-  });
-//Select SVG element
-var data = [80, 120, 60, 150, 200];
-var barHeight = 20;
-var bar = d3
-  .select("#greenRect")
-  .selectAll("rect")
-  .data(data)
-  .enter()
-  .append("rect")
-  .attr("width", function(d) {
-    return d;
-  })
-  .attr("height", barHeight - 1)
-  .attr("transform", function(d, i) {
-    return "translate(10," + i * barHeight + ")";
-  });
+//API to fetch historical data of Bitcoin Price Index
+const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 
-// javascript
-var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
+/**
+ * Loading data from API when DOM Content has been loaded'.
+ */
+document.addEventListener("DOMContentLoaded", function(event) {
+fetch(api)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        var parsedData = parseData(data);
+        drawChart(parsedData);
+    })
+    .catch(function(err) { console.log(err); })
+});
 
-var svgWidth = 500,
-  svgHeight = 300,
-  barPadding = 5;
-var barWidth = svgWidth / dataset.length;
+// /**
+//  * Parse data into key-value pairs
+//  * @param {object} data Object containing historical data of BPI
+//  */
+function parseData(data) {
+    var arr = [];
+    for (var i in data.bpi) {
+        arr.push({
+            date: new Date(i), //date
+            value: +data.bpi[i] //convert string to number
+        });
+    }
+    return arr;
+}
 
-var svg = d3
-  .select("#simpleChart")
-  .attr("width", svgWidth)
-  .attr("height", svgHeight);
+// /**
+//  * Creates a chart using D3
+//  * @param {object} data Object containing historical data of BPI
+//  */
+function drawChart(data) {
+var svgWidth = 600, svgHeight = 400;
+var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+var width = svgWidth - margin.left - margin.right;
+var height = svgHeight - margin.top - margin.bottom;
 
-var barChart = svg
-  .selectAll("rect")
-  .data(dataset)
-  .enter()
-  .append("rect")
-  .attr("y", function(d) {
-    return svgHeight - d;
-  })
-  .attr("height", function(d) {
-    return d;
-  })
-  .attr("width", barWidth - barPadding)
-  .attr("transform", function(d, i) {
-    var translate = [barWidth * i, 0];
-    return "translate(" + translate + ")";
-  });
+var svg = d3.select('svg')
+    .attr("width", svgWidth)
+    .attr("height", svgHeight);
+    
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-const person = {
-  fooName: "hawk",
-  getName() {
-    return this.fooName;
-  }
-};
-const hawk = person.getName;
-console.log(hawk());
-console.log(typeof hawk);
+var x = d3.scaleTime()
+    .rangeRound([0, width]);
+
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
+
+var line = d3.line()
+    .x(function(d) { return x(d.date)})
+    .y(function(d) { return y(d.value)})
+    x.domain(d3.extent(data, function(d) { return d.date }));
+    y.domain(d3.extent(data, function(d) { return d.value }));
+
+g.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .select(".domain")
+    .remove();
+
+g.append("g")
+    .call(d3.axisLeft(y))
+    .append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("Price ($)");
+
+g.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
+}
+
