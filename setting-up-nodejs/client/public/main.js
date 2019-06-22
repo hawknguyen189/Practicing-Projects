@@ -124,3 +124,4 @@ X(); // X() invoked the second time; log: a = 20 (new a, previous a ceased to ex
 X(); // X() invoked the third time; log: a = 20 b = 12
 Y(); // Y() invoked the first time; log: a= 20 b = 10 (b is from the closure value of 2nd assignment)
 
+
