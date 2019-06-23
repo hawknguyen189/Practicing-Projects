@@ -63,7 +63,7 @@ const googleTrend = async () => {
     if (response.ok) {
       const jsonResponse = await response.json();
       console.log(jsonResponse);
-      const parseData = parseData(jsonResponse);
+      //const parseData = parseData(jsonResponse);
       // console.log("this is parse data", parseData);
       //return jsonResponse;
     }
@@ -74,6 +74,7 @@ const googleTrend = async () => {
 
 // shortenUrl();
 // googleTrend();
+//date format yyyy-mm-dd
 var a = "cat" && "dog";
 console.log(a);
 

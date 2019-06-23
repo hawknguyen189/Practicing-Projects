@@ -96,7 +96,7 @@ const googleTrends = require("google-trends-api");
 app.get('/trends', (req, res, next) => {
   console.log("start api requesting");
   googleTrends
-    .interestOverTime({ keyword: "bitcoin" })
+    .interestOverTime({ keyword: "bitcoin", startTime: new Date('2019-05-20')})
     .then(function (results) {
       // console.log(results);
       res.json(results);
@@ -106,6 +106,7 @@ app.get('/trends', (req, res, next) => {
       res.json(err);
     });
 });
+//date format yyyy-mm-dd
 
 
 // catch 404 and forward to error handler
