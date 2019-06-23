@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
     .then(function(data) {
       var parsedData = parseData(data);
-      drawChart(parsedData);
+      // drawChart(parsedData);
     })
     .catch(function(err) {
       console.log(err);

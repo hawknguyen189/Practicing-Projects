@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+// import * as d3 from "d3";
 
 class App extends Component {
   render() {
@@ -78,15 +79,22 @@ const postRequest = async () => {
     console.log("fetch fail", error);
   }
 };
-const parseData = (data) => {
+const parseData = data => {
   let dataArray = [];
-  for (let i in data){
+  for (let i in data) {
     dataArray.push({
       date: new Date(data[i].formattedTime),
       value: +data[i].value[0]
     });
   }
-  return dataArray;
+  drawChart(dataArray);
+
+  //rearrange data for google chart
+  let dataGoogle = [];
+  for (let i in data) {
+    dataGoogle.push([new Date(data[i].formattedTime), +data[i].value[0]]);
+  }
+  drawBackgroundColor(dataGoogle);
 };
 const googleTrend = async () => {
   // const wordQuery = inputField.value;
@@ -97,9 +105,7 @@ const googleTrend = async () => {
       const jsonResponse = await response.json();
       const resultParse = JSON.parse(jsonResponse);
       console.log(resultParse.default.timelineData);
-      const parsedData = parseData(resultParse.default.timelineData);
-      console.log("this is parse data", parsedData);
-      return parsedData;
+      parseData(resultParse.default.timelineData);
       //const parseData = parseData(jsonResponse);
       // console.log("this is parse data", parseData);
       //return jsonResponse;
@@ -110,8 +116,100 @@ const googleTrend = async () => {
 };
 
 // shortenUrl();
-const googleTrendBtc = googleTrend();
+googleTrend();
 //date format yyyy-mm-dd
+function drawChart(data) {
+  var svgWidth = 600,
+    svgHeight = 400;
+  var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+  var width = svgWidth - margin.left - margin.right;
+  var height = svgHeight - margin.top - margin.bottom;
 
+  var svg = window.d3
+    .select("svg")
+    .attr("width", svgWidth)
+    .attr("height", svgHeight);
+
+  var g = svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var x = window.d3.scaleTime().rangeRound([0, width]);
+
+  var y = window.d3.scaleLinear().rangeRound([height, 0]);
+
+  var line = window.d3
+    .line()
+    .x(function(d) {
+      return x(d.date);
+    })
+    .y(function(d) {
+      return y(d.value);
+    });
+  x.domain(
+    window.d3.extent(data, function(d) {
+      return d.date;
+    })
+  );
+  y.domain(
+    window.d3.extent(data, function(d) {
+      return d.value;
+    })
+  );
+
+  g.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(window.d3.axisBottom(x))
+    .select(".domain")
+    .remove();
+
+  g.append("g")
+    .call(window.d3.axisLeft(y))
+    .append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("Price ($)");
+
+  g.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 1.5)
+    .attr("d", line)
+    .on("click", function(d, i) {
+      return window.d3.select(this).text(d);
+    });
+}
+
+//google chart
+window.google.charts.load("current", { packages: ["corechart", "line"] });
+window.google.charts.setOnLoadCallback(drawBackgroundColor);
+
+function drawBackgroundColor(rearrangeData) {
+  var data = new window.google.visualization.DataTable();
+  data.addColumn("date", "X");
+  data.addColumn("number", "Interests");
+  data.addRows(rearrangeData);
+
+  var options = {
+    hAxis: {
+      title: "Time"
+    },
+    vAxis: {
+      title: "Popularity"
+    },
+    backgroundColor: "#f1f8e9"
+  };
+
+  var chart = new window.google.visualization.LineChart(
+    document.getElementById("chart_div")
+  );
+  chart.draw(data, options);
+}
 
 export default App;
