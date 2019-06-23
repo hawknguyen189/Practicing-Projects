@@ -1,6 +1,30 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
+  }
+}
+
 // const xhr = new XMLHttpRequest(); //create new obj
 // xhr.open("POST",
 //   "https://localhost:3001/?url=https://maximum.blog/@shalvah/posts"); // assuming you’re hosting it locally
@@ -54,7 +78,16 @@ const postRequest = async () => {
     console.log("fetch fail", error);
   }
 };
-
+const parseData = (data) => {
+  let dataArray = [];
+  for (let i in data){
+    dataArray.push({
+      date: new Date(data[i].formattedTime),
+      value: +data[i].value[0]
+    });
+  }
+  return dataArray;
+};
 const googleTrend = async () => {
   // const wordQuery = inputField.value;
   const endpoint = "http://localhost:3000/trends";
@@ -62,7 +95,11 @@ const googleTrend = async () => {
     const response = await fetch(endpoint);
     if (response.ok) {
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
+      const resultParse = JSON.parse(jsonResponse);
+      console.log(resultParse.default.timelineData);
+      const parsedData = parseData(resultParse.default.timelineData);
+      console.log("this is parse data", parsedData);
+      return parsedData;
       //const parseData = parseData(jsonResponse);
       // console.log("this is parse data", parseData);
       //return jsonResponse;
@@ -73,32 +110,8 @@ const googleTrend = async () => {
 };
 
 // shortenUrl();
-// googleTrend();
+const googleTrendBtc = googleTrend();
 //date format yyyy-mm-dd
-var a = "cat" && "dog";
-console.log(a);
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
 
 export default App;
