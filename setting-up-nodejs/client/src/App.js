@@ -94,6 +94,7 @@ const parseData = data => {
   for (let i in data) {
     dataGoogle.push([new Date(data[i].formattedTime), +data[i].value[0]]);
   }
+  console.table(dataGoogle);
   drawBackgroundColor(dataGoogle);
 };
 const googleTrend = async () => {
@@ -116,7 +117,9 @@ const googleTrend = async () => {
 };
 
 // shortenUrl();
-googleTrend();
+document.addEventListener("DOMContentLoaded", function(event) {
+  googleTrend();
+});
 //date format yyyy-mm-dd
 function drawChart(data) {
   var svgWidth = 600,
@@ -188,7 +191,8 @@ function drawChart(data) {
 
 //google chart
 window.google.charts.load("current", { packages: ["corechart", "line"] });
-window.google.charts.setOnLoadCallback(drawBackgroundColor);
+// window.google.charts.setOnLoadCallback(drawBackgroundColor);
+//this function will be called when our document (including google API) is fully loaded
 
 function drawBackgroundColor(rearrangeData) {
   var data = new window.google.visualization.DataTable();
