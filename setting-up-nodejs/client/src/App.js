@@ -193,6 +193,7 @@ function drawChart(data) {
 window.google.charts.load("current", { packages: ["corechart", "line"] });
 // window.google.charts.setOnLoadCallback(drawBackgroundColor);
 //this function will be called when our document (including google API) is fully loaded
+//unlock this when we want JS to run this function automatically 
 
 function drawBackgroundColor(rearrangeData) {
   var data = new window.google.visualization.DataTable();
