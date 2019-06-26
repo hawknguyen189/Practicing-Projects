@@ -39,6 +39,7 @@ function parseData(data) {
 //  * Creates a chart using D3
 //  * @param {object} data Object containing historical data of BPI
 //  */
+//using d3 to draw chart 
 function drawChart(data) {
   var svgWidth = 600,
     svgHeight = 400;
