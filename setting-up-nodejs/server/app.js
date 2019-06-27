@@ -96,7 +96,7 @@ const googleTrends = require("google-trends-api");
 app.get('/trends', (req, res, next) => {
   console.log("start api requesting");
   googleTrends
-    .interestOverTime({ keyword: "bitcoin", startTime: new Date('2019-05-20')})
+    .interestOverTime({ keyword: "bitcoin", startTime: new Date('2019-04-20')})
     .then(function (results) {
       // console.log(results);
       res.json(results);

@@ -120,7 +120,10 @@ const googleTrend = async () => {
 document.addEventListener("DOMContentLoaded", function(event) {
   googleTrend();
 });
+
+//cal googleTrend function as soon as the website is loaded
 //date format yyyy-mm-dd
+
 function drawChart(data) {
   var svgWidth = 600,
     svgHeight = 400;
