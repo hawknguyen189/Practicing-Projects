@@ -79,7 +79,7 @@ const postRequest = async () => {
     console.log("fetch fail", error);
   }
 };
-const parseData = data => {
+const parseData = (data, chartLocation, searchKey) => {
   let dataArray = [];
   for (let i in data) {
     dataArray.push({
@@ -87,7 +87,7 @@ const parseData = data => {
       value: +data[i].value[0]
     });
   }
-  drawChart(dataArray);
+  // d3drawChart(dataArray);
 
   //rearrange data for google chart
   let dataGoogle = [];
@@ -95,18 +95,22 @@ const parseData = data => {
     dataGoogle.push([new Date(data[i].formattedTime), +data[i].value[0]]);
   }
   console.table(dataGoogle);
-  drawBackgroundColor(dataGoogle);
+  drawBackgroundColor(dataGoogle, chartLocation, searchKey);
 };
-const googleTrend = async () => {
+const googleTrend = async (searchKey,chartLocation) => {
   // const wordQuery = inputField.value;
-  const endpoint = "http://localhost:3000/trends";
+  let endpoint = "http://localhost:3000/" + searchKey + "trends";
   try {
     const response = await fetch(endpoint);
     if (response.ok) {
       const jsonResponse = await response.json();
       const resultParse = JSON.parse(jsonResponse);
       console.log(resultParse.default.timelineData);
-      parseData(resultParse.default.timelineData);
+      parseData(
+        resultParse.default.timelineData,
+        chartLocation,
+        searchKey
+      );
       //const parseData = parseData(jsonResponse);
       // console.log("this is parse data", parseData);
       //return jsonResponse;
@@ -118,13 +122,14 @@ const googleTrend = async () => {
 
 // shortenUrl();
 document.addEventListener("DOMContentLoaded", function(event) {
-  googleTrend();
+  googleTrend("bitcoin", "chart_first");
+  googleTrend("iota", "chart_second");
 });
 
 //cal googleTrend function as soon as the website is loaded
 //date format yyyy-mm-dd
 
-function drawChart(data) {
+function d3drawChart(data) {
   var svgWidth = 600,
     svgHeight = 400;
   var margin = { top: 20, right: 20, bottom: 30, left: 50 };
@@ -196,12 +201,12 @@ function drawChart(data) {
 window.google.charts.load("current", { packages: ["corechart", "line"] });
 // window.google.charts.setOnLoadCallback(drawBackgroundColor);
 //this function will be called when our document (including google API) is fully loaded
-//unlock this when we want JS to run this function automatically 
+//unlock this when we want JS to run this function automatically
 
-function drawBackgroundColor(rearrangeData) {
+function drawBackgroundColor(rearrangeData, chartLocation, searchKey) {
   var data = new window.google.visualization.DataTable();
   data.addColumn("date", "X");
-  data.addColumn("number", "Interests");
+  data.addColumn("number", searchKey);
   data.addRows(rearrangeData);
 
   var options = {
@@ -215,7 +220,7 @@ function drawBackgroundColor(rearrangeData) {
   };
 
   var chart = new window.google.visualization.LineChart(
-    document.getElementById("chart_div")
+    document.getElementById(chartLocation)
   );
   chart.draw(data, options);
 }

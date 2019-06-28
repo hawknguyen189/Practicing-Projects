@@ -93,15 +93,28 @@ app.post('/api', (req, res, next) => {
 const googleTrends = require("google-trends-api");
 // import googleTrends from "./google-trends-api-master/src/index";
 
-app.get('/trends', (req, res, next) => {
+app.get("/bitcointrends", (req, res, next) => {
   console.log("start api requesting");
   googleTrends
-    .interestOverTime({ keyword: "bitcoin", startTime: new Date('2019-04-20')})
-    .then(function (results) {
+    .interestOverTime({ keyword: "bitcoin", startTime: new Date("2019-04-20") })
+    .then(function(results) {
       // console.log(results);
       res.json(results);
     })
-    .catch(function (err) {
+    .catch(function(err) {
+      // console.error(err);
+      res.json(err);
+    });
+});
+app.get("/iotatrends", (req, res, next) => {
+  console.log("start api requesting");
+  googleTrends
+    .interestOverTime({ keyword: "iota", startTime: new Date("2019-04-20") })
+    .then(function(results) {
+      // console.log(results);
+      res.json(results);
+    })
+    .catch(function(err) {
       // console.error(err);
       res.json(err);
     });
