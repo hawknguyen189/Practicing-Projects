@@ -124,6 +124,7 @@ const googleTrend = async (searchKey,chartLocation) => {
 document.addEventListener("DOMContentLoaded", function(event) {
   googleTrend("bitcoin", "chart_first");
   googleTrend("iota", "chart_second");
+  googleTrend("dadi", "chart_third");
 });
 
 //cal googleTrend function as soon as the website is loaded
