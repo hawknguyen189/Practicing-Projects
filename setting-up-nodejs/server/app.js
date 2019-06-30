@@ -119,6 +119,19 @@ app.get("/iotatrends", (req, res, next) => {
       res.json(err);
     });
 });
+app.get("/daditrends", (req, res, next) => {
+  console.log("start api requesting");
+  googleTrends
+    .interestOverTime({ keyword: "iota", startTime: new Date("2019-04-20") })
+    .then(function(results) {
+      // console.log(results);
+      res.json(results);
+    })
+    .catch(function(err) {
+      // console.error(err);
+      res.json(err);
+    });
+});
 //date format yyyy-mm-dd
 
 
