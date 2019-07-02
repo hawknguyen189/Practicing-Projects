@@ -130,4 +130,10 @@ switch(1){
   default: console.log(3);
   case 4: console.log(4);
 }
+switch(1){
+  case 2: console.log(2);
+  break;
+  default: console.log(3);
+  case 4: console.log(4);
+}
 
