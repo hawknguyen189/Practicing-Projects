@@ -124,16 +124,6 @@ X(); // X() invoked the first time; log: a = 20(new a) and b = 10 (preserved in 
 X(); // X() invoked the second time; log: a = 20 (new a, previous a ceased to exist after function execution) b = 11 (preserved in closure)
 X(); // X() invoked the third time; log: a = 20 b = 12
 Y(); // Y() invoked the first time; log: a= 20 b = 10 (b is from the closure value of 2nd assignment)
-switch(1){
-  case 2: console.log(2);
-  break;
-  default: console.log(3);
-  case 4: console.log(4);
-}
-switch(1){
-  case 2: console.log(2);
-  break;
-  default: console.log(3);
-  case 4: console.log(4);
-}
+
+
 
