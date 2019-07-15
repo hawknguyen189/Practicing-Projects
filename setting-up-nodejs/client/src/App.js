@@ -94,7 +94,7 @@ const parseData = (data, chartLocation, searchKey) => {
   for (let i in data) {
     dataGoogle.push([new Date(data[i].formattedTime), +data[i].value[0]]);
   }
-  console.table(dataGoogle);
+  // console.table(dataGoogle);
   drawBackgroundColor(dataGoogle, chartLocation, searchKey);
 };
 const googleTrend = async (searchKey,chartLocation) => {
@@ -105,7 +105,7 @@ const googleTrend = async (searchKey,chartLocation) => {
     if (response.ok) {
       const jsonResponse = await response.json();
       const resultParse = JSON.parse(jsonResponse);
-      console.log(resultParse.default.timelineData);
+      // console.log(resultParse.default.timelineData);
       parseData(
         resultParse.default.timelineData,
         chartLocation,
@@ -120,6 +120,24 @@ const googleTrend = async (searchKey,chartLocation) => {
   }
 };
 
+//coinmarketcap
+const get24hVolume = async () => {
+  // const wordQuery = inputField.value;
+  const endpoint = "http://localhost:3000/24hvolume";
+  try {
+    const response = await fetch(endpoint);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log("coinmarketcap succeeded");
+      console.log("CMC response", jsonResponse);
+      
+      //return jsonResponse;
+    }
+  } catch (error) {
+    console.log("this is the error from cmc",error);
+  }
+};
+// get24hVolume();
 // shortenUrl();
 document.addEventListener("DOMContentLoaded", function(event) {
   googleTrend("bitcoin", "chart_first");
