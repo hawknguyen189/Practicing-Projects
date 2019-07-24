@@ -91,6 +91,7 @@ app.post("/api", (req, res, next) => {
     });
 });
 
+//will improve these low-level code to hard boil code
 // *******************************
 const googleTrends = require("google-trends-api");
 // import googleTrends from "./google-trends-api-master/src/index";
