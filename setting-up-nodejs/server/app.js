@@ -121,10 +121,23 @@ app.get("/iotatrends", (req, res, next) => {
       res.json(err);
     });
 });
+app.get("/edgenetworktrends", (req, res, next) => {
+  console.log("start api requesting");
+  googleTrends
+    .interestOverTime({ keyword: "dadi", startTime: new Date("2019-04-20") })
+    .then(function(results) {
+      // console.log(results);
+      res.json(results);
+    })
+    .catch(function(err) {
+      // console.error(err);
+      res.json(err);
+    });
+});
 app.get("/daditrends", (req, res, next) => {
   console.log("start api requesting");
   googleTrends
-    .interestOverTime({ keyword: "iota", startTime: new Date("2019-04-20") })
+    .interestOverTime({ keyword: "edge network", startTime: new Date("2019-04-20") })
     .then(function(results) {
       // console.log(results);
       res.json(results);

@@ -142,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   googleTrend("bitcoin", "chart_first");
   googleTrend("iota", "chart_second");
   googleTrend("dadi", "chart_third");
+  googleTrend("edgenetwork", "chart_fourth");
 });
 
 //cal googleTrend function as soon as the website is loaded
