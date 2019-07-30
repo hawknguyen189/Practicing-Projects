@@ -129,7 +129,6 @@ const get24hVolume = async () => {
       console.log("coinmarketcap succeeded");
       console.log("CMC response", jsonResponse);
       return jsonResponse.total_volume_24h;
-      //return jsonResponse;
     }
   } catch (error) {
     console.log("this is the error from cmc", error);
