@@ -244,4 +244,8 @@ function drawBackgroundColor(rearrangeData, chartLocation, searchKey) {
   chart.draw(data, options);
 }
 
+const obj = {"0":1, 0:2};
+const result = obj['0'] + obj[0];
+console.log(result);
+
 export default App;
