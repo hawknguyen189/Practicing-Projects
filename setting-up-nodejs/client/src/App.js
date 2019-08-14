@@ -132,7 +132,6 @@ const get24hVolume = async () => {
     }
   } catch (error) {
     console.log("this is the error from cmc", error);
-    console.log("this is the error from cmc", error);
   }
 };
 
