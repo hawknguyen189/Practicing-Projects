@@ -25,6 +25,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/bitcoin", (req,res,next) => {
+  console.log("start new app use for bitcoin only");
+  next();
+})
 
 app.get("/url", (req, res, next) => {
   console.log("here is the get response");
