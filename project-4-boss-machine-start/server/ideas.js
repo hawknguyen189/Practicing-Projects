@@ -1,5 +1,6 @@
 const express = require('express');
 const ideasRouter = express.Router();
+const checkMillionDollarIdea = require("./checkMillionDollarIdea");
 const {
   createMeeting,
   getAllFromDatabase,
@@ -15,19 +16,32 @@ ideasRouter.get("/", (req, res, next) => {
 });
 ideasRouter.param("ideaId", (req, res, next, id) => {
   req.id = String(id);
-  next();
+  const ideaData = getFromDatabaseById("ideas", req.id);
+  if (ideaData) {
+    req.idea = ideaData
+    next();
+  } else {
+    res.status(404).send("invalid idea id");
+  }
 });
 ideasRouter.get("/:ideaId", (req, res, next) => {
-  res.status(200).send(getFromDatabaseById("ideas", req.id));
+    res.status(200).send(req.idea);
 });
-ideasRouter.put("/:ideaId", (req, res, next) => {
-  res.status(204).send(updateInstanceInDatabase("ideas", req.body));
+ideasRouter.put("/:ideaId", checkMillionDollarIdea, (req, res, next) => {
+  const ideaData = updateInstanceInDatabase("ideas", req.body);
+    res.status(200).send(ideaData);
+
 });
-ideasRouter.post("/", (req, res, next) => {
-  res.status(200).send(addToDatabase("ideas", req.body));
+ideasRouter.post("/",checkMillionDollarIdea, (req, res, next) => {
+  res.status(201).send(addToDatabase("ideas", req.body));
 });
 ideasRouter.delete("/:ideaId", (req, res, next) => {
-  res.status(204).send(deleteFromDatabasebyId("ideas", req.id));
+  const ideaData = deleteFromDatabasebyId("ideas", req.id);
+  if (ideaData) {
+    res.status(204).send(ideaData);
+  } else {
+    res.status(404).send("invalid idea id");
+  }
 });
 ideasRouter.delete("/", (req, res, next) => {
   res.status(204).send(deleteAllFromDatabase("ideas"));

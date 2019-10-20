@@ -17,16 +17,32 @@ minionsRouter.param("minionId", (req,res,next,id) => {
     next();
 })
 minionsRouter.get("/:minionId", (req, res, next) => {
-  res.status(200).send(getFromDatabaseById("minions",req.id));
+    const minionData = getFromDatabaseById("minions", req.id);
+    if (minionData){
+        res.status(200).send(minionData);
+    } else {
+        res.status(404).send("Not a valid ID");
+    }
 });
 minionsRouter.put("/:minionId", (req, res, next) => {
-  res.status(204).send(updateInstanceInDatabase("minions", req.body));
+    req.body.id = String(req.body.id);
+    const minionData = updateInstanceInDatabase("minions", req.body);
+    if (minionData){
+        res.status(200).send(minionData);
+    } else {
+        res.status(404).send("Not a valid ID");
+    }
 });
 minionsRouter.post("/", (req,res,next) => {
-    res.status(200).send(addToDatabase("minions",req.body))
+    res.status(201).send(addToDatabase("minions",req.body))
 })
 minionsRouter.delete("/:minionId", (req,res,next) => {
-    res.status(204).send(deleteFromDatabasebyId("minions", req.id));
+    const minionData = deleteFromDatabasebyId("minions", req.id);
+    if (minionData) {
+      res.status(204).send();
+    } else {
+      res.status(404).send("Not a valid ID");
+    }
 })
 minionsRouter.delete("/", (req,res,next) => {
     res.status(204).send(deleteAllFromDatabase("minions"));
