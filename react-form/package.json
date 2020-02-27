@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react": "^16.7.13",
-    "@types/react-dom": "^16.0.11",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "universal-cookie": "^3.0.7"
+    "@hawknguyen189/disjoint-force-directed-graph": "https://api.observablehq.com/@hawknguyen189/disjoint-force-directed-graph.tgz?v=3",
+    "@observablehq/how-to-embed-a-notebook-in-a-react-app": "https://api.observablehq.com/@observablehq/how-to-embed-a-notebook-in-a-react-app.tgz?v=3",
+    "@observablehq/runtime": "^4.7.0",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "d3": "^5.15.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.4.0",
+    "universal-cookie": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel src -d lib",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -24,5 +28,14 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-syntax-import-meta": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "eslint-loader": "^3.0.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
 }
