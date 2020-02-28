@@ -7,6 +7,7 @@ import { ContactContainer } from "./container/ContactContainer";
 import { Slider } from "./component/SlidingShow/ArrowSlider/Slider";
 import D3Chart from "./component/D3Chart/D3Chart"
 import D3DisjointForce from "./component/D3Chart/D3DisjointForce";
+import CollisionDetection from "./component/D3Chart/CollisionDetection";
 
 class App extends Component {
   render() {
@@ -20,8 +21,8 @@ class App extends Component {
           <Slider />
           <ContactContainer />
         </div>
-        <D3Chart></D3Chart>
         <D3DisjointForce></D3DisjointForce>
+        <CollisionDetection></CollisionDetection>
       </div>
     );
   }

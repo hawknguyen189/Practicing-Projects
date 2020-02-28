@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   googleTrend("dadi", "chart_third");
   googleTrend("edgenetwork", "chart_fourth");
 });
-
 //cal googleTrend function as soon as the website is loaded
 //date format yyyy-mm-dd
 
