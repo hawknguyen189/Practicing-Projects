@@ -5,7 +5,7 @@ const CollisionDetection = () => {
   useEffect(() => {
     const width = 960,
       height = 500;
-    const nodes = d3.range(200).map(() => ({ radius: Math.random() * 15 + 5 })),
+    const nodes = d3.range(200).map(() => ({ radius: Math.random() * 12 + 4 })),
       root = nodes[0],
       color = d3.scaleOrdinal(d3.schemeTableau10);
     const svg = d3
@@ -25,12 +25,14 @@ const CollisionDetection = () => {
           return i ? 0 : -2000;
         })
       )
-      .force("collision", d3.forceCollide(5))
+      //   .force("collision", d3.forceCollide(5))
+      //set force in the center
       .force("center", d3.forceCenter(width / 2, height / 2))
+      //The decay factor is akin to atmospheric friction; after the application of any forces during a tick, each node’s velocity is multiplied by 1 - decay
       .velocityDecay(0.8)
-    //forceX Y set gravity strength
-      .force("x", d3.forceX(width/2).strength(0.05))
-      .force("y", d3.forceY(height/2).strength(0.05))
+      //forceX Y set gravity strength
+      .force("x", d3.forceX(width / 2).strength(0.05))
+      .force("y", d3.forceY(height / 2).strength(0.05))
       .force("collide", forceCollide());
 
     svg
