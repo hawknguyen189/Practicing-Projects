@@ -5,6 +5,7 @@ const h = 300;
 const data = [12, 5, 6, 6, 9, 10];
 const D3Chart = () => {
   useEffect(() => {
+    //this use as sample and working place
     const svg = d3
       .select("body")
       .append("svg")
