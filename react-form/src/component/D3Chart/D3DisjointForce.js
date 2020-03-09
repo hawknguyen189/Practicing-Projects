@@ -108,5 +108,4 @@ const D3DisjointForce = () => {
   });
   return <div></div>;
 };
-
 export default D3DisjointForce;

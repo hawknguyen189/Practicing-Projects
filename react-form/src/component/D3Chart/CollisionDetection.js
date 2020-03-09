@@ -12,8 +12,24 @@ const CollisionDetection = () => {
       .select("body")
       .append("svg")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+      .attr("id", "collisionChart")
+      .style("display", "none");
+    const button = d3
+      .select("body")
+      .append("button")
+      .attr("id", "collisionBtn")
+      .text("toggle collision detection")
+      .style("display", "block");
 
+    document.querySelector("#collisionBtn").onclick = () => {
+      const chart = document.querySelector("#collisionChart");
+      if (chart.style.display === "none") {
+        chart.style.display = "block";
+      } else {
+        chart.style.display = "none";
+      }
+    };
     root.radius = 0;
     root.fixed = true;
 
